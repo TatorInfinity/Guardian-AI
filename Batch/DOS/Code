@@ -1,0 +1,437 @@
+@echo off
+
+title Gairdian Ai made by Tator
+
+echo TATORWARE 2024©
+
+@echo off
+setlocal EnableDelayedExpansion
+
+:: Random AI names and backgrounds
+set names[0]=Athena
+set names[1]=Zephyr
+set names[2]=Titan
+set names[3]=Nova
+set names[4]=Astra
+
+set backgrounds[0]=Protector of the Skies
+set backgrounds[1]=Guardian of the Seas
+set backgrounds[2]=Defender of the Forests
+set backgrounds[3]=Sentinel of the Mountains
+set backgrounds[4]=Watcher of the Deserts
+
+:: Generate random indices
+set /a nameIndex=%random% %% 5
+set /a bgIndex=%random% %% 5
+
+:: Assign AI name and background
+set AI_Name=!names[%nameIndex%]!
+set AI_Background=!backgrounds[%bgIndex%]!
+
+:: Loading screen with a 3D octagon
+cls
+echo.
+echo  ====================
+echo  ||  Loading AI... ||
+echo  ====================
+for /l %%i in (1,1,3) do (
+    echo.
+    echo  \                 /
+    echo   \               /
+    echo    \             /
+    echo     \           /
+    echo      \         /
+    echo       \_______/
+    echo        \     /
+    echo         \   /
+    echo          \_/
+    timeout /t 1 >nul
+    cls
+)
+
+:: AI initialization
+echo Initializing AI...
+timeout /t 2 >nul
+echo.
+echo AI Name: %AI_Name%
+echo Background: %AI_Background%
+echo.
+
+:: Main menu
+:main_menu
+cls
+echo =========================
+echo     Guardian of Earth
+echo =========================
+echo 1. AI Status
+echo 2. AI Learning
+echo 3. AI Mission
+echo 4. Exit
+echo =========================
+set /p choice=Choose an option (1-4): 
+
+if "%choice%"=="1" goto ai_status
+if "%choice%"=="2" goto ai_learning
+if "%choice%"=="3" goto ai_mission
+if "%choice%"=="4" goto exit
+
+goto main_menu
+
+:ai_status
+cls
+echo =========================
+echo         AI Status
+echo =========================
+echo AI Name: %AI_Name%
+echo Background: %AI_Background%
+echo Status: Online and ready to protect Earth.
+echo.
+pause
+goto main_menu
+
+:ai_learning
+cls
+echo =========================
+echo       AI Learning
+echo =========================
+echo AI is constantly learning from its environment.
+echo Analyzing data and improving strategies...
+timeout /t 2 >nul
+echo Learning complete.
+echo.
+pause
+goto main_menu
+
+:ai_mission
+cls
+echo =========================
+echo        AI Mission
+echo =========================
+echo Mission: Protect Earth from all threats.
+echo Monitoring environment for potential dangers.
+timeout /t 2 >nul
+echo Mission status: Ongoing.
+echo.
+pause
+goto main_menu
+
+:exit
+cls
+echo Shutting down AI...
+timeout /t 2 >nul
+exit
+
+@echo off
+setlocal enabledelayedexpansion
+
+:: File paths
+set profiles_file=guardian_profiles.txt
+set log_file=guardian_log.txt
+
+:: Initialize profiles file if it doesn't exist
+if not exist %profiles_file% (
+    echo {} > %profiles_file%
+)
+
+:: Initialize log file if it doesn't exist
+if not exist %log_file% (
+    echo [] > %log_file%
+)
+
+:: Function to read the profiles
+:read_profiles
+set /p profiles=<%profiles_file%
+goto :eof
+
+:: Function to save the profiles
+:save_profiles
+echo %profiles% > %profiles_file%
+goto :eof
+
+:: Function to read the log
+:read_log
+set /p log=<%log_file%
+goto :eof
+
+:: Function to save the log
+:save_log
+echo %log% > %log_file%
+goto :eof
+
+:: Function to generate human-like response (stub)
+:generate_response
+set response=Hello, Guardian! Your oxygen level is good and the ship is at a safe location.
+goto :eof
+
+:: Add a new guardian
+:add_guardian
+set /p name=Enter guardian name:
+set /a oxygen_level=100
+set x_coord=%random%
+set y_coord=%random%
+set z_coord=%random%
+call :read_profiles
+set profiles=%profiles% {"name":"%name%", "oxygen_level":%oxygen_level%, "coordinates":{"x":%x_coord%, "y":%y_coord%, "z":%z_coord%}}
+call :save_profiles
+goto :eof
+
+:: Update oxygen level and coordinates
+:update_status
+call :read_profiles
+for /f "tokens=1,2,3 delims=:" %%i in (%profiles%) do (
+    set name=%%i
+    set oxygen_level=%%j
+    set coordinates=%%k
+    set /a new_oxygen_level=!oxygen_level!-1
+    set x_coord=%random%
+    set y_coord=%random%
+    set z_coord=%random%
+    set profiles=!profiles:{\"name\":\"!name!\", \"oxygen_level\":!oxygen_level!, \"coordinates\":{\"x\":!coordinates:x!:x:%x_coord%,\"y\":!coordinates:y!:y:%y_coord%,\"z\":!coordinates:z!:z:%z_coord%}}:!new_oxygen_level!!
+)
+call :save_profiles
+goto :eof
+
+:: Log the status
+:log_status
+call :read_log
+set log=%log% [{"time":"%time%", "profiles":%profiles%}]
+call :save_log
+goto :eof
+
+:: Main loop
+:main_loop
+cls
+echo 1. Add Guardian
+echo 2. Update Status
+echo 3. Log Status
+echo 4. Exit
+set /p choice=Choose an option:
+if %choice%==1 call :add_guardian
+if %choice%==2 call :update_status
+if %choice%==3 call :log_status
+if %choice%==4 exit /b
+goto :main_loop
+
+:: Start the main loop
+call :main_loop
+
+
+@echo off
+
+title Gairdian Ai made by Tator
+
+echo TATORWARE 2024©
+
+@echo off
+setlocal EnableDelayedExpansion
+
+:: Random AI names and backgrounds
+set names[0]=Athena
+set names[1]=Zephyr
+set names[2]=Titan
+set names[3]=Nova
+set names[4]=Astra
+
+set backgrounds[0]=Protector of the Skies
+set backgrounds[1]=Guardian of the Seas
+set backgrounds[2]=Defender of the Forests
+set backgrounds[3]=Sentinel of the Mountains
+set backgrounds[4]=Watcher of the Deserts
+
+:: Generate random indices
+set /a nameIndex=%random% %% 5
+set /a bgIndex=%random% %% 5
+
+:: Assign AI name and background
+set AI_Name=!names[%nameIndex%]!
+set AI_Background=!backgrounds[%bgIndex%]!
+
+:: Loading screen with a 3D octagon
+cls
+echo.
+echo  ====================
+echo  ||  Loading AI... ||
+echo  ====================
+for /l %%i in (1,1,3) do (
+    echo.
+    echo  \                 /
+    echo   \               /
+    echo    \             /
+    echo     \           /
+    echo      \         /
+    echo       \_______/
+    echo        \     /
+    echo         \   /
+    echo          \_/
+    timeout /t 1 >nul
+    cls
+)
+
+:: AI initialization
+echo Initializing AI...
+timeout /t 2 >nul
+echo.
+echo AI Name: %AI_Name%
+echo Background: %AI_Background%
+echo.
+
+:: Main menu
+:main_menu
+cls
+echo =========================
+echo     Guardian of Earth
+echo =========================
+echo 1. AI Status
+echo 2. AI Learning
+echo 3. AI Mission
+echo 4. Exit
+echo =========================
+set /p choice=Choose an option (1-4): 
+
+if "%choice%"=="1" goto ai_status
+if "%choice%"=="2" goto ai_learning
+if "%choice%"=="3" goto ai_mission
+if "%choice%"=="4" goto exit
+
+goto main_menu
+
+:ai_status
+cls
+echo =========================
+echo         AI Status
+echo =========================
+echo AI Name: %AI_Name%
+echo Background: %AI_Background%
+echo Status: Online and ready to protect Earth.
+echo.
+pause
+goto main_menu
+
+:ai_learning
+cls
+echo =========================
+echo       AI Learning
+echo =========================
+echo AI is constantly learning from its environment.
+echo Analyzing data and improving strategies...
+timeout /t 2 >nul
+echo Learning complete.
+echo.
+pause
+goto main_menu
+
+:ai_mission
+cls
+echo =========================
+echo        AI Mission
+echo =========================
+echo Mission: Protect Earth from all threats.
+echo Monitoring environment for potential dangers.
+timeout /t 2 >nul
+echo Mission status: Ongoing.
+echo.
+pause
+goto main_menu
+
+:exit
+cls
+echo Shutting down AI...
+timeout /t 2 >nul
+exit
+
+@echo off
+setlocal enabledelayedexpansion
+
+:: File paths
+set profiles_file=guardian_profiles.txt
+set log_file=guardian_log.txt
+
+:: Initialize profiles file if it doesn't exist
+if not exist %profiles_file% (
+    echo {} > %profiles_file%
+)
+
+:: Initialize log file if it doesn't exist
+if not exist %log_file% (
+    echo [] > %log_file%
+)
+
+:: Function to read the profiles
+:read_profiles
+set /p profiles=<%profiles_file%
+goto :eof
+
+:: Function to save the profiles
+:save_profiles
+echo %profiles% > %profiles_file%
+goto :eof
+
+:: Function to read the log
+:read_log
+set /p log=<%log_file%
+goto :eof
+
+:: Function to save the log
+:save_log
+echo %log% > %log_file%
+goto :eof
+
+:: Function to generate human-like response (stub)
+:generate_response
+set response=Hello, Guardian! Your oxygen level is good and the ship is at a safe location.
+goto :eof
+
+:: Add a new guardian
+:add_guardian
+set /p name=Enter guardian name:
+set /a oxygen_level=100
+set x_coord=%random%
+set y_coord=%random%
+set z_coord=%random%
+call :read_profiles
+set profiles=%profiles% {"name":"%name%", "oxygen_level":%oxygen_level%, "coordinates":{"x":%x_coord%, "y":%y_coord%, "z":%z_coord%}}
+call :save_profiles
+goto :eof
+
+:: Update oxygen level and coordinates
+:update_status
+call :read_profiles
+for /f "tokens=1,2,3 delims=:" %%i in (%profiles%) do (
+    set name=%%i
+    set oxygen_level=%%j
+    set coordinates=%%k
+    set /a new_oxygen_level=!oxygen_level!-1
+    set x_coord=%random%
+    set y_coord=%random%
+    set z_coord=%random%
+    set profiles=!profiles:{\"name\":\"!name!\", \"oxygen_level\":!oxygen_level!, \"coordinates\":{\"x\":!coordinates:x!:x:%x_coord%,\"y\":!coordinates:y!:y:%y_coord%,\"z\":!coordinates:z!:z:%z_coord%}}:!new_oxygen_level!!
+)
+call :save_profiles
+goto :eof
+
+:: Log the status
+:log_status
+call :read_log
+set log=%log% [{"time":"%time%", "profiles":%profiles%}]
+call :save_log
+goto :eof
+
+:: Main loop
+:main_loop
+cls
+echo 1. Add Guardian
+echo 2. Update Status
+echo 3. Log Status
+echo 4. Exit
+set /p choice=Choose an option:
+if %choice%==1 call :add_guardian
+if %choice%==2 call :update_status
+if %choice%==3 call :log_status
+if %choice%==4 exit /b
+goto :main_loop
+
+:: Start the main loop
+call :main_loop
+
+
+
